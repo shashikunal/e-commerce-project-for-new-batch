@@ -8,11 +8,11 @@ const Login = () => {
   let {login} = useContext(AuthContext);
   let navigate = useNavigate();
   let [state , setState] = useState({
-    username:"",
+    email:"",
     password:"",
     isLoading:false,
     });
-let { username , password , isLoading} = state;
+let { email , password , isLoading} = state;
 
 
 
@@ -24,7 +24,7 @@ let handleChange = e =>{
 let handleSubmit = async(e) =>{
   e.preventDefault();
   try {
-      let payload = { username , password};
+      let payload = { email , password};
       setState({isLoading:true});
       await login(payload);
    toast.success("successfully user has been loggedin");
@@ -52,13 +52,13 @@ let handleSubmit = async(e) =>{
              <div className="form-group">
               <label htmlFor="email">username</label>
               <input
-                type="username"
+                type="email"
                 className="form-control"
-                name="username"
-                placeholder="enter username"
+                name="email"
+                placeholder="enter email"
                 required
-                value={username}
-                id="username"
+                value={email}
+                id="email"
                  onChange={handleChange}
               />
             </div>

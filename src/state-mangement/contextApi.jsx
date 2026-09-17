@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import {
   createUser,
   Login,
@@ -56,19 +56,21 @@ mailUrl
 
   const login = async (email, password) => {
     try {
-      let tokenData = await Login(email, password);
-      let { access_token, refresh_token } = tokenData;
-      let newToken = access_token; //string
-      setToken(tokenData);
-      localStorage.setItem("TOKEN", newToken);
+      let {accessToken} = await Login(email, password);
+       localStorage.setItem("TOKEN", accessToken);
+     
     } catch (error) {
       throw error;
     }
   };
 
+  // useEffect(()=>{
+  //   setToken(token)
+  // },[token])
+
   return (
     <>
-      <AuthContext.Provider value={{ register, login , ActivationUser }}>
+      <AuthContext.Provider value={{ register, login , ActivationUser , token }}>
         {children}
       </AuthContext.Provider>
     </>
