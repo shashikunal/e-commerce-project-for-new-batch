@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 
 const Register = () => {
   let {register} = useContext(AuthContext);
+  let [mailUrl , setMailUrl] = useState(localStorage.getItem("mailUrl"))
   let navigate = useNavigate();
   let [state , setState] = useState({
     name:"",
@@ -26,11 +27,12 @@ let handleChange = e =>{
 let handleSubmit = async(e) =>{
   e.preventDefault();
   try {
-      let payload = {name , email , password , avatar};
+      let payload = {name , email , password};
       setState({isLoading:true});
       await register(payload);
-   toast.success("successfully user has been registered");
-      navigate("/auth/login")
+   toast.success(`successfully email has been send to ${email}`);
+      navigate("/auth/activate");
+      // window.location.assign(mailUrl)
 
   } catch (error) {
     console.log(err);

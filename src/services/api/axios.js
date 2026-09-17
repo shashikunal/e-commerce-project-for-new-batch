@@ -1,5 +1,5 @@
 import axios from "axios";
-export const BASE_URL = "https://api.escuelajs.co/api/v1";
+export const BASE_URL = "https://mockapi-mauve.vercel.app/api/v1"; //base_url
 
 //axios instance
 // use create method for creating axios instances
