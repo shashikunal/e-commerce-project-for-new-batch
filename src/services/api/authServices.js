@@ -11,7 +11,6 @@ response has data or not
 
 export const createUser = async(payload) =>{
    const {data} = await api.post("/auth/register" , payload); //we http post request for creating new user
-  console.log(data);
    return data;
 }
 
@@ -35,6 +34,22 @@ export const ActivationServiceApi = async(payload) =>{
 
 export const Login = async(payload) =>{
    const {data} = await api.post("/auth/login" , payload);
-   console.log(data)
+   return data;
+}
+
+
+
+/*-------------------GET ME USER or current user data  -----------------------*/
+/*
+HTTP METHOD IS GET 
+RESPONSE STATUS CODE is 200 
+RESPONSE STATUS TEXT is ok 
+this private  view
+it does not have request payload 
+response has data  
+URL /auth/me
+*/
+export const GetMe = async()=>{
+   const {data} = await api.get("/auth/me");
    return data;
 }
