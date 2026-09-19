@@ -48,6 +48,7 @@ const ProfileDashboard = () => {
                   <span>{user?.role}</span>
                 </div>
                 <div className={Styles.courses}>
+                  
                   {courses?.map((course) => {
                     return (
                       <main key={course?.course_name}>

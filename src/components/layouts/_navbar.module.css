@@ -37,8 +37,22 @@ justify-content: flex-end;
     display: flex;
     justify-content: space-around;
     width: 100%;
+    align-items: center;
 }
 
 .menuBlock nav ul li a {
     padding: 10px;
+}
+.menuBlock button {
+    background: #fff;
+    padding: 10px 21px;
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menuBlock button:hover{
+    background-color: #714cb6;
+    color: #fff;
 }
