@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import ActivationCode from "./components/auth/ActivationCode";
+import ProfileDashboard from "./components/profile/ProfileDashboard";
 
 
 const App = () => {
@@ -24,6 +25,10 @@ const App = () => {
                         <Route path="/auth/register" element={<Register />} />
                         <Route path="/auth/activate" element={<ActivationCode />} />
                         <Route path="/auth/login" element={<Login />} />
+
+
+                        {/* Authenticated Routes */}
+                        <Route path="/user/profile" element={<ProfileDashboard />} />
                     </Routes>
                 </main>
             </article>

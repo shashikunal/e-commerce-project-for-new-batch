@@ -71,3 +71,21 @@ export const GetMe = async()=>{
    const {data} = await api.get("/auth/me");
    return data;
 }
+
+
+
+
+/*-------------------UPDATE USER INFO  -----------------------*/
+/*
+HTTP METHOD IS PUT 
+RESPONSE STATUS CODE is 200
+RESPONSE STATUS TEXT is ok 
+this private  view
+it has have request payload 
+response has data  
+URL auth/update-user-info
+*/
+export const UpdateUserInfoApi = async(payload)=>{
+   const {data} = await api.put("/auth/update-user-info" , payload);
+   return data;
+}

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { useFetch } from "../../../hooks/fetchUser";
+import { useAuth } from "../../../hooks/fetchUser";
 import toast from "react-hot-toast";
 
 const AuthNav = () => {
-  const { user, logout } = useFetch();
+  const { user, logout } = useAuth();
 
   let handleLogout = () => {
       logout(); 
@@ -18,7 +18,7 @@ const AuthNav = () => {
         <Link to="#">Dashboard</Link>
       </li>
       <li>
-        <Link to="#">{user?.name}</Link>
+        <Link to="/user/profile">{user?.name}</Link>
       </li>
       <li>
         <button onClick={ handleLogout}>Logout</button>

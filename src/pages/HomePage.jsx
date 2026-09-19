@@ -1,7 +1,7 @@
-import {useFetch} from "../hooks/fetchUser";
+import {useAuth} from "../hooks/fetchUser";
 
 const HomePage = () => {
-const {user} = useFetch();
+const {user} = useAuth();
 
 
   return (

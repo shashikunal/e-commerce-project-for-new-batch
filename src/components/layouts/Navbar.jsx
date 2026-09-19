@@ -3,10 +3,10 @@ import Styles from "./_navbar.module.css";
 import { Link } from 'react-router-dom';
 import AuthNav from './navbar/AuthNav';
 import AnonUser from './navbar/AnonUser';
-import { useFetch } from '../../hooks/fetchUser';
+import { useAuth } from '../../hooks/fetchUser';
 
 const Navbar = () => {
-    const {user} = useFetch();
+    const {user} = useAuth();
 
   return (
     <section id={Styles.navbar}>

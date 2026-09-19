@@ -4,7 +4,8 @@ import {
   Login,
   ActivationServiceApi,
   GetMe,
-  LogoutServiceApi
+  LogoutServiceApi,
+  UpdateUserInfoApi
 } from "../services/api/authServices";
 
 export const AuthContext = createContext();
@@ -119,10 +120,17 @@ export const AuthProvider = ({ children }) => {
     return response;
   }
 
+
+  /*----------------------PROFILE ------------------------*/
+   const updateUserInfo = async(...payload) =>{
+    let {data} = await UpdateUserInfoApi(payload);
+    return data;
+  }
+
   return (
     <>
       <AuthContext.Provider
-        value={{ register, login, ActivationUser, token, user , logout }}
+        value={{ register, login, ActivationUser, token, user , logout , updateUserInfo }}
       >
         {children}
       </AuthContext.Provider>
