@@ -26,7 +26,9 @@ export const AuthProvider = ({ children }) => {
       }
 
       try {
+        //if token present in localstorage call GetMe function
         const response = await GetMe();
+        setLoading(true)
         setUser(response?.user ?? null);
       } catch (error) {
         console.error(error.response?.data || error.message);

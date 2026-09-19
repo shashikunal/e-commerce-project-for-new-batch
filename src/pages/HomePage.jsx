@@ -1,11 +1,13 @@
-import { useContext } from "react";
-import { AuthContext } from "../state-mangement/contextApi";
+import {useFetch} from "../hooks/fetchUser";
 
 const HomePage = () => {
-  let {user} = useContext(AuthContext);
-  console.log(user)
+const {user} = useFetch();
+console.log(user)
+
   return (
-    <div>HomePage</div>
+    <div>
+      <h1>{user?.name}</h1>
+    </div>
   )
 }
 

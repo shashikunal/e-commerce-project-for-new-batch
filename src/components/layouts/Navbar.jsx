@@ -1,8 +1,13 @@
 import React from 'react';
 import Styles from "./_navbar.module.css";
 import { Link } from 'react-router-dom';
+import AuthNav from './navbar/AuthNav';
+import AnonUser from './navbar/AnonUser';
+import { useFetch } from '../../hooks/fetchUser';
 
 const Navbar = () => {
+    const {user} = useFetch();
+
   return (
     <section id={Styles.navbar}>
         <article className={Styles.container}>
@@ -12,18 +17,10 @@ const Navbar = () => {
             <aside className={Styles.menuBlock}>
                <nav>
                 <ul>
-                    <li>
-                        <Link to="#">Dashboard</Link>
-                    </li>
-                     <li>
-                        <Link to="/auth/register">Register</Link>
-                    </li>
-                     <li>
-                        <Link to="/auth/Login">Login</Link>
-                    </li>
-                     <li>
-                        <Link to="/auth/logout">Logout</Link>
-                    </li>
+                    {
+                        user ? <AuthNav /> : <AnonUser /> 
+                    }
+                   
                 </ul>
                </nav>
             </aside>
