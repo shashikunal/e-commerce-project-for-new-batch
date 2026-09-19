@@ -4,6 +4,7 @@ import {
   Login,
   ActivationServiceApi,
   GetMe,
+  LogoutServiceApi
 } from "../services/api/authServices";
 
 export const AuthContext = createContext();
@@ -110,10 +111,18 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+
+  /*=========================LOGOUT =======================*/
+  const logout = async()=>{
+    let response = await LogoutServiceApi();
+    console.log(response)
+    return response;
+  }
+
   return (
     <>
       <AuthContext.Provider
-        value={{ register, login, ActivationUser, token, user }}
+        value={{ register, login, ActivationUser, token, user , logout }}
       >
         {children}
       </AuthContext.Provider>

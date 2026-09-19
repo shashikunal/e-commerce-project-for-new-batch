@@ -2,7 +2,7 @@ import {useFetch} from "../hooks/fetchUser";
 
 const HomePage = () => {
 const {user} = useFetch();
-console.log(user)
+
 
   return (
     <div>

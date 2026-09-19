@@ -37,6 +37,24 @@ export const Login = async(payload) =>{
    return data;
 }
 
+/*===================LOGOUT SERVICE API -------------------*/
+
+// HTTP METHOD IS GET 
+// RESPONSE STATUS CODE is 200 
+// RESPONSE STATUS TEXT is ok 
+// this private  view
+// it does not have request payload 
+// response has data  
+// URL /auth/logout
+
+
+
+export const LogoutServiceApi = async () => { 
+  const {data} =  await api.get("/auth/logout");
+  console.log(data)
+  return data;
+}
+
 
 
 /*-------------------GET ME USER or current user data  -----------------------*/
