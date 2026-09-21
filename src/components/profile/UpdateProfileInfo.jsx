@@ -4,8 +4,7 @@ import { useAuth } from "../../hooks/fetchUser";
 import { AuthContext } from "../../state-mangement/contextApi";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { UpdateUserInfoApi } from "../../services/api/authServices";
+
 
 const UpdateProfileInfo = () => {
   const navigate = useNavigate();
@@ -13,18 +12,15 @@ const UpdateProfileInfo = () => {
   let { user } = useAuth();
   let [name, setName] = useState(user.name);
 
-  const handleSubmit = async(e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
     try {
-      // console.log(name);
-      // updateUserInfo(name);
-  //  await axios.put("https://mockapi-mauve.vercel.app/api/v1/auth/update-user-info" , name);
- let data = await UpdateUserInfoApi(name);
-      console.log(data)
+    updateUserInfo({name}); 
+       
       toast.success("successfully user profile has been updated");
       navigate("/user/profile");
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error?.response?.data?.message || error.message);
     }
   };
 

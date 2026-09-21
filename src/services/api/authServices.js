@@ -88,5 +88,6 @@ URL auth/update-user-info
 */
 export const UpdateUserInfoApi = async(payload)=>{
    const {data} = await api.put("/auth/update-user-info" , payload);
+   console.log(data)
    return data;
 }

@@ -5,7 +5,7 @@ import {
   ActivationServiceApi,
   GetMe,
   LogoutServiceApi,
-  UpdateUserInfoApi
+  UpdateUserInfoApi,
 } from "../services/api/authServices";
 
 export const AuthContext = createContext();
@@ -30,11 +30,11 @@ export const AuthProvider = ({ children }) => {
       try {
         //if token present in localstorage call GetMe function
         const response = await GetMe();
-        setLoading(true)
+        setLoading(true);
         setUser(response?.user ?? null);
       } catch (error) {
         console.error(error.response?.data || error.message);
-        setUser(null)
+        setUser(null);
       } finally {
         setLoading(false);
       }
@@ -112,26 +112,34 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-
   /*=========================LOGOUT =======================*/
-  const logout = async()=>{
+  const logout = async () => {
     let response = await LogoutServiceApi();
-    console.log(response)
+    console.log(response);
     return response;
-  }
-
+  };
 
   /*----------------------PROFILE ------------------------*/
-   const updateUserInfo = async(...payload) =>{
-    let res =  await UpdateUserInfoApi(payload);
-    console.log(res)
+  const updateUserInfo = async (payload) => {
+    let res = await UpdateUserInfoApi(payload);
+    if (res?.user) {
+      setUser(res.user);
+    }
     return res;
-  }
+  };
 
   return (
     <>
       <AuthContext.Provider
-        value={{ register, login, ActivationUser, token, user , logout , updateUserInfo }}
+        value={{
+          register,
+          login,
+          ActivationUser,
+          token,
+          user,
+          logout,
+          updateUserInfo,
+        }}
       >
         {children}
       </AuthContext.Provider>
