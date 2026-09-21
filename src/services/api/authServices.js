@@ -34,6 +34,7 @@ export const ActivationServiceApi = async(payload) =>{
 
 export const Login = async(payload) =>{
    const {data} = await api.post("/auth/login" , payload);
+   console.log(data.user.name)
    return data;
 }
 

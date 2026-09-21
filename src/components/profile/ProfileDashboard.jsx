@@ -3,7 +3,7 @@ import Styles from "./_profile.module.css";
 import { useAuth } from "../../hooks/fetchUser";
 
 import ProfileSidebar from "./ProfileSidebar";
-import ProfileContent from "./ProfileContent";
+import { Outlet } from "react-router-dom";
 
 const ProfileDashboard = () => {
   const { user } = useAuth();
@@ -15,7 +15,7 @@ const ProfileDashboard = () => {
         ) : (
           <>
             <ProfileSidebar />
-            <ProfileContent />
+            <Outlet />
           </>
         )}
       </article>

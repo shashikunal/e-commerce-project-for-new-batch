@@ -14,7 +14,7 @@ const ProfileSidebar = () => {
         />
       </picture>
       <figcaption>
-        <Link to={"/user/update-user-info"}>
+        <Link to={"update-user-info"}>
           <span className={Styles.icon}>
             <FaPencilAlt />
           </span>

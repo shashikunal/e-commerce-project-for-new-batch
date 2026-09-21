@@ -1,5 +1,6 @@
 import Styles from "./_profile.module.css";
 import { useAuth } from "../../hooks/fetchUser";
+
 let courses = [
   {
     course_name: "reactjs",
@@ -16,8 +17,7 @@ let courses = [
     date: "11/5/2026",
   },
 ];
-
-const ProfileContent = () => {
+const ProfileIndexPage = () => {
   const { user } = useAuth();
   return (
     <aside className={Styles.content}>
@@ -53,4 +53,4 @@ const ProfileContent = () => {
   );
 };
 
-export default ProfileContent;
+export default ProfileIndexPage;

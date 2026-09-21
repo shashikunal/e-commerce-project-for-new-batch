@@ -117,3 +117,53 @@
   font-weight: bold;
   top: 1px;
 }
+
+.updateForm h1 {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 0;
+  /* text-decoration: underline; */
+  border-bottom: 3px solid #eee;
+  margin-bottom: 10px;
+}
+
+.updateForm div {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+}
+
+.updateForm label {
+  width: 100%;
+  display: block;
+  padding: 10px 0;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+.updateForm input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  background: #fff;
+  outline: none;
+  border: 1px solid #ccc;
+}
+
+.updateForm button {
+  background-color: #1b0d6f;
+  width: auto;
+  display: block;
+  padding: 10px 30px;
+  text-align: center;
+  border: 1px solid #1a0595;
+  color: #fff;
+  transition: ease-in-out 0.5s linear;
+  text-transform: capitalize;
+  font-weight: bold;
+  cursor: pointer;
+}
+.updateForm button:hover {
+  background-color: #714cb6;
+  color: #fff;
+}

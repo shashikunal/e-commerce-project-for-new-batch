@@ -123,8 +123,9 @@ export const AuthProvider = ({ children }) => {
 
   /*----------------------PROFILE ------------------------*/
    const updateUserInfo = async(...payload) =>{
-    let {data} = await UpdateUserInfoApi(payload);
-    return data;
+    let res =  await UpdateUserInfoApi(payload);
+    console.log(res)
+    return res;
   }
 
   return (

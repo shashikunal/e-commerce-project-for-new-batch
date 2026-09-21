@@ -9,6 +9,7 @@ import ActivationCode from "./components/auth/ActivationCode";
 import ProfileDashboard from "./components/profile/ProfileDashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import UpdateProfileInfo from "./components/profile/UpdateProfileInfo";
+import ProfileIndexPage from "./components/profile/ProfileIndexPage";
 
 const App = () => {
   return (
@@ -30,8 +31,10 @@ const App = () => {
                 {/* Authenticated Routes */}
 
                 <Route element={<ProtectedRoute />}>
-                  <Route path="/user/profile" element={<ProfileDashboard />} />
-                  <Route path="/user/update-user-info" element={<UpdateProfileInfo />} />
+                  <Route path="/user/profile" element={<ProfileDashboard />}>
+                  <Route index element={<ProfileIndexPage />} />
+                  <Route path="update-user-info" element={<UpdateProfileInfo />} />
+                  </Route>
                 </Route>
               </Routes>
             </main>
