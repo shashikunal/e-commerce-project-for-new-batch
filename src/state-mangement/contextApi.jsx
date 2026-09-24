@@ -131,7 +131,7 @@ export const AuthProvider = ({ children }) => {
 
   /*--------------UPDATE PROFILE Picture  ----------------*/
   const updateProfilePicture = async (payload) =>{
-    let res = await UpdateProfilePictureApi(payload);
+    let res = await UpdateProfilePictureApi({avatar:payload});
     if(res.user){
       setUser(res.user)
     }

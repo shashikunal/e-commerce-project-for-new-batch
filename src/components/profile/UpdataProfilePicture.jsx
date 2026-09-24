@@ -5,15 +5,47 @@ import { AuthContext } from "../../state-mangement/contextApi";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-
 const UpdataProfilePicture = () => {
   const navigate = useNavigate();
   const { updateProfilePicture } = useContext(AuthContext);
   let { user } = useAuth();
+//   const [updatePicture, setUpdatePicture] = useState(null);
+  const [preview , setPreview] = useState(null)
 
+  const handleFileChange = (e) => {
+    let file = e.target.files?.[0];
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      toast.error("Image file can use png , jpeg or webp");
+      return;
+    } //string method in js
 
-  const handleSubmit =  (e) => {
-    
+    //file size should be 2mb or less
+    if (file.size > 2 * 1024 * 1024) {
+      toast.error("image must be less than 2mb");
+      return;
+    }
+
+    const reader = new FileReader(); //webApi handling files
+    console.log(reader.result)
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setPreview(reader.result); //blob base64 format
+      }
+    };
+    reader.readAsDataURL(file);
+
+  
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    try {
+      updateProfilePicture(preview);
+   
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -26,9 +58,16 @@ const UpdataProfilePicture = () => {
             <input
               type="file"
               required
-             accept="image/*"
+              accept="image/*"
+              onChange={handleFileChange}
             />
           </div>
+         {/*---------------Picture preview --------------*/}
+         {
+            preview && <picture>
+                <img src={preview} alt="image" height={100} width={100} />
+            </picture>
+         }
           <div className="form-group">
             <button>update Profile Picture</button>
           </div>
