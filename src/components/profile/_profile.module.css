@@ -167,3 +167,13 @@
   background-color: #714cb6;
   color: #fff;
 }
+
+.profilePic {
+  position: relative;
+}
+
+.profilePic svg {
+    position: absolute;
+    right: 0;
+    font-size: 35px;
+}

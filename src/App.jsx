@@ -10,6 +10,7 @@ import ProfileDashboard from "./components/profile/ProfileDashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import UpdateProfileInfo from "./components/profile/UpdateProfileInfo";
 import ProfileIndexPage from "./components/profile/ProfileIndexPage";
+import UpdataProfilePicture from "./components/profile/UpdataProfilePicture";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
                   <Route path="/user/profile" element={<ProfileDashboard />}>
                   <Route index element={<ProfileIndexPage />} />
                   <Route path="update-user-info" element={<UpdateProfileInfo />} />
+                  <Route path="update-profile-picture" element={<UpdataProfilePicture />} />
                   </Route>
                 </Route>
               </Routes>

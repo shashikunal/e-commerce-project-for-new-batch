@@ -6,6 +6,7 @@ import {
   GetMe,
   LogoutServiceApi,
   UpdateUserInfoApi,
+  UpdateProfilePictureApi,
 } from "../services/api/authServices";
 
 export const AuthContext = createContext();
@@ -128,6 +129,15 @@ export const AuthProvider = ({ children }) => {
     return res;
   };
 
+  /*--------------UPDATE PROFILE Picture  ----------------*/
+  const updateProfilePicture = async (payload) =>{
+    let res = await UpdateProfilePictureApi(payload);
+    if(res.user){
+      setUser(res.user)
+    }
+    return res;
+  }
+
   return (
     <>
       <AuthContext.Provider
@@ -139,6 +149,7 @@ export const AuthProvider = ({ children }) => {
           user,
           logout,
           updateUserInfo,
+          updateProfilePicture
         }}
       >
         {children}
