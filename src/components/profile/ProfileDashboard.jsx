@@ -4,6 +4,7 @@ import { useAuth } from "../../hooks/fetchUser";
 
 import ProfileSidebar from "./ProfileSidebar";
 import { Outlet } from "react-router-dom";
+import Spinner from "../../Spinner";
 
 const ProfileDashboard = () => {
   const { user } = useAuth();
@@ -11,7 +12,7 @@ const ProfileDashboard = () => {
     <section className={Styles.profileDashboard}>
       <article className={Styles.container}>
         {user === null ? (
-          "Loading...."
+         <Spinner />
         ) : (
           <>
             <ProfileSidebar />

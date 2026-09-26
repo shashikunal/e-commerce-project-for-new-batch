@@ -11,6 +11,8 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import UpdateProfileInfo from "./components/profile/UpdateProfileInfo";
 import ProfileIndexPage from "./components/profile/ProfileIndexPage";
 import UpdataProfilePicture from "./components/profile/UpdataProfilePicture";
+import AdminRoute from "./routes/AdminRoute";
+import AdminDashboard from "./components/Admin/AdminDashboard";
 
 const App = () => {
   return (
@@ -21,6 +23,7 @@ const App = () => {
             <aside className="top_header">
               <Navbar />
             </aside>
+
             <main className="main">
               <Routes>
                 <Route path="/" element={<HomePage />} />
@@ -33,10 +36,21 @@ const App = () => {
 
                 <Route element={<ProtectedRoute />}>
                   <Route path="/user/profile" element={<ProfileDashboard />}>
-                  <Route index element={<ProfileIndexPage />} />
-                  <Route path="update-user-info" element={<UpdateProfileInfo />} />
-                  <Route path="update-profile-picture" element={<UpdataProfilePicture />} />
+                    <Route index element={<ProfileIndexPage />} />
+                    <Route
+                      path="update-user-info"
+                      element={<UpdateProfileInfo />}
+                    />
+                    <Route
+                      path="update-profile-picture"
+                      element={<UpdataProfilePicture />}
+                    />
                   </Route>
+                </Route>
+
+                {/*------------ADMIN routes -------------------*/}
+                <Route element={<AdminRoute />}>
+                  <Route path="admin/admin-dashboard" element={<AdminDashboard />} />
                 </Route>
               </Routes>
             </main>

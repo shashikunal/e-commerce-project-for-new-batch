@@ -13,7 +13,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("TOKEN"));
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null); //initial state
   const [loading, setLoading] = useState(true);
   //useEffect for fetching token and based token fetch users
   //GLOBAL DATA
@@ -149,7 +149,8 @@ export const AuthProvider = ({ children }) => {
           user,
           logout,
           updateUserInfo,
-          updateProfilePicture
+          updateProfilePicture,
+          loading
         }}
       >
         {children}

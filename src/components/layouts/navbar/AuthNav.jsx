@@ -6,11 +6,11 @@ const AuthNav = () => {
   const { user, logout } = useAuth();
 
   let handleLogout = () => {
-      logout(); 
-      localStorage.removeItem("TOKEN");
-      toast.success("successfully user has been loggedout")
-      window.location.assign("/auth/login")
-     };
+    logout();
+    localStorage.removeItem("TOKEN");
+    toast.success("successfully user has been loggedout");
+    window.location.assign("/auth/login");
+  };
 
   return (
     <>
@@ -18,10 +18,14 @@ const AuthNav = () => {
         <Link to="#">Dashboard</Link>
       </li>
       <li>
-        <Link to="/user/profile">{user?.name}</Link>
+        {user?.role === "admin" ? (
+          <Link to="/admin/admin-dashboard">{user?.name}</Link>
+        ) : (
+          <Link to="/user/profile">{user?.name}</Link>
+        )}
       </li>
       <li>
-        <button onClick={ handleLogout}>Logout</button>
+        <button onClick={handleLogout}>Logout</button>
       </li>
     </>
   );
