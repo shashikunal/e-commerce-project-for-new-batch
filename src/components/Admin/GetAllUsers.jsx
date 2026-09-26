@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import Spinner from "../../Spinner";
 import { AuthContext } from "../../state-mangement/contextApi";
 import Styles from "./_admin.module.css";
+import { FaRegEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const GetAllUsers = () => {
   let { getAllUsersApi } = useContext(AuthContext);
@@ -24,12 +26,11 @@ const GetAllUsers = () => {
         <table>
           <thead>
             <tr>
-             <th>id</th>
-            <th>name</th>
-            <th>email</th>
-            <th>role</th>
+              <th>id</th>
+              <th>name</th>
+              <th>email</th>
+              <th>role</th>
             </tr>
-           
           </thead>
           <tbody>
             {state === null ? (
@@ -41,7 +42,16 @@ const GetAllUsers = () => {
                     <td>{user._id}</td>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
-                    <td>{user.role}</td>
+                    <td>
+                      <p className={Styles.icons}>
+                        <span>{user.role}</span>
+                        <span>
+                          <Link to={`user/${user._id}`}>
+                            <FaRegEdit />
+                          </Link>
+                        </span>
+                      </p>
+                    </td>
                   </tr>
                 );
               })

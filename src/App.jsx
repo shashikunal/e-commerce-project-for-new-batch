@@ -14,6 +14,7 @@ import UpdataProfilePicture from "./components/profile/UpdataProfilePicture";
 import AdminRoute from "./routes/AdminRoute";
 import AdminDashboard from "./components/Admin/AdminDashboard";
 import GetAllUsers from "./components/Admin/GetAllUsers";
+import SingleUser from "./components/Admin/SingleUser";
 
 const App = () => {
   return (
@@ -53,6 +54,7 @@ const App = () => {
                 <Route element={<AdminRoute />}>
                   <Route path="admin/admin-dashboard" element={<AdminDashboard />}>
                     <Route index element={<GetAllUsers />} />
+                    <Route path="user/:id" element={<SingleUser />} />
                   </Route>
                 </Route>
               </Routes>
