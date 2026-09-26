@@ -1,0 +1,26 @@
+.admin_dashboard {
+  background: #fff;
+  height: 90vh;
+}
+
+.admin_dashboard article {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.admin_dashboard article aside:nth-child(1) {
+  flex-basis: 20%;
+  background: #4f3b78;
+  padding: 20px;
+  border-right: 1px solid purple;
+  height: 100vh;
+  border-top: 1px solid #1111117d;
+  color: #fff;
+}
+
+.admin_dashboard article aside:nth-child(2) {
+  flex-basis: 80%;
+  background: #fff;
+  padding: 10px;
+}
