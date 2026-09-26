@@ -7,6 +7,7 @@ import { useAuth } from '../../hooks/fetchUser';
 
 const Navbar = () => {
     const {user} = useAuth();
+    console.log(user)
 
   return (
     <section id={Styles.navbar}>

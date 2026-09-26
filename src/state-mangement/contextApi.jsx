@@ -8,7 +8,7 @@ import {
   UpdateUserInfoApi,
   UpdateProfilePictureApi,
 } from "../services/api/authServices";
-import { fetchAllUsers } from "../services/api/adminServices";
+import { fetchAllUsers, updateRole } from "../services/api/adminServices";
 
 
 export const AuthContext = createContext();
@@ -151,6 +151,12 @@ export const AuthProvider = ({ children }) => {
    return data;
   };
 
+  const updateRoleApi = async(payload) =>{
+    let res = await updateRole(payload);
+   setUser(res.user);
+    return res;
+  }
+
   /*------------------ADMIN DATA ENDS HERE ------------------*/
 
   return (
@@ -167,7 +173,8 @@ export const AuthProvider = ({ children }) => {
           updateProfilePicture,
           loading,
           AllUsers,
-          getAllUsersApi
+          getAllUsersApi,
+          updateRoleApi
         }}
       >
         {children}
