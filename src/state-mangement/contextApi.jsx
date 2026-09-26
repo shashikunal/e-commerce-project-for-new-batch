@@ -8,6 +8,8 @@ import {
   UpdateUserInfoApi,
   UpdateProfilePictureApi,
 } from "../services/api/authServices";
+import { fetchAllUsers } from "../services/api/adminServices";
+
 
 export const AuthContext = createContext();
 
@@ -15,6 +17,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("TOKEN"));
   const [user, setUser] = useState(null); //initial state
   const [loading, setLoading] = useState(true);
+  const [AllUsers , setAllUsers] = useState(null)
   //useEffect for fetching token and based token fetch users
   //GLOBAL DATA
   // --------------------------------
@@ -24,6 +27,7 @@ export const AuthProvider = ({ children }) => {
       // No token -> user is not logged in
       if (!token) {
         setUser(null);
+        setAllUsers(null)
         setLoading(false);
         return;
       }
@@ -132,11 +136,22 @@ export const AuthProvider = ({ children }) => {
   /*--------------UPDATE PROFILE Picture  ----------------*/
   const updateProfilePicture = async (payload) =>{
     let res = await UpdateProfilePictureApi({avatar:payload});
+  
     if(res.user){
       setUser(res.user)
     }
     return res;
   }
+
+
+  /*------------------ADMIN DATA -----------------*/
+  const getAllUsersApi = async () => {
+    let  data  = await fetchAllUsers();
+    setAllUsers(data.users)
+   return data;
+  };
+
+  /*------------------ADMIN DATA ENDS HERE ------------------*/
 
   return (
     <>
@@ -150,7 +165,9 @@ export const AuthProvider = ({ children }) => {
           logout,
           updateUserInfo,
           updateProfilePicture,
-          loading
+          loading,
+          AllUsers,
+          getAllUsersApi
         }}
       >
         {children}

@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom"
 import Styles from "./_admin.module.css"
 
 const AdminDashboard = () => {
@@ -8,7 +9,7 @@ const AdminDashboard = () => {
             sidebar
           </aside>
           <aside>
-            content
+           <Outlet />
           </aside>
       </article>
     </section>

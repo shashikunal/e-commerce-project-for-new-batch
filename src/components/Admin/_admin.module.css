@@ -3,7 +3,7 @@
   height: 90vh;
 }
 
-.admin_dashboard article {
+.admin_dashboard > article {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -24,3 +24,33 @@
   background: #fff;
   padding: 10px;
 }
+
+.admin_dashboard #userList > article > h1 {
+      color: purple;
+    padding: 10px 0px;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 20px;
+    width: fit-content;
+    border-bottom: 3px solid #32136c;
+    margin: 20px 10px;
+}
+ table , tr  {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 10px; 
+    border: 1px solid #ccc;
+ }
+ td {
+  padding: 10px;
+ 
+ }
+ 
+
+ thead {
+    width: 100%;
+    border: 1px solid #714cb6 !important;
+    background: #1b0d6f !important;
+    color: #fff;
+    padding: 20px;
+ }

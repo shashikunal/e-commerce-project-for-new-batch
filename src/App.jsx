@@ -13,6 +13,7 @@ import ProfileIndexPage from "./components/profile/ProfileIndexPage";
 import UpdataProfilePicture from "./components/profile/UpdataProfilePicture";
 import AdminRoute from "./routes/AdminRoute";
 import AdminDashboard from "./components/Admin/AdminDashboard";
+import GetAllUsers from "./components/Admin/GetAllUsers";
 
 const App = () => {
   return (
@@ -50,7 +51,9 @@ const App = () => {
 
                 {/*------------ADMIN routes -------------------*/}
                 <Route element={<AdminRoute />}>
-                  <Route path="admin/admin-dashboard" element={<AdminDashboard />} />
+                  <Route path="admin/admin-dashboard" element={<AdminDashboard />}>
+                    <Route index element={<GetAllUsers />} />
+                  </Route>
                 </Route>
               </Routes>
             </main>
