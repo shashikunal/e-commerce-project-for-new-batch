@@ -4,10 +4,28 @@ import { AuthContext } from "../../state-mangement/contextApi";
 import Styles from "./_admin.module.css";
 import { FaRegEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { MdDelete } from "react-icons/md";
+import toast from "react-hot-toast";
 
 const GetAllUsers = () => {
-  let { getAllUsersApi } = useContext(AuthContext);
+
+  let { getAllUsersApi ,  deleteUserApi} = useContext(AuthContext);
   let [state, setState] = useState(null);
+
+const handleDelete = id =>{
+  const userConfirmed = window.confirm("Do you want to proceed?");
+ try {
+   if(userConfirmed){
+      deleteUserApi(id);
+      toast.success("successfully user has been deleted");
+    //  window.location.assign("/admin/admin-dashboard")
+  }else {
+    toast.error("not process")
+  }
+ } catch (error) {
+  console.log(error)
+ }
+}
 
   useEffect(() => {
     let fetchData = async () => {
@@ -49,6 +67,11 @@ const GetAllUsers = () => {
                           <Link to={`user/${user._id}`}>
                             <FaRegEdit />
                           </Link>
+                        </span>
+                        <span>
+                          <button onClick={() => handleDelete(`${user._id}`)}>
+                            <MdDelete />
+                          </button>
                         </span>
                       </p>
                     </td>
